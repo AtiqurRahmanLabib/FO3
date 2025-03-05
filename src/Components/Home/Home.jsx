@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProviders';
+
 
 const Home = () => {
+  
+    const authInfo = useContext(AuthContext);
+    console.log(authInfo);
+  
     const fakeData = [
         { id: 1, title: 'Item 1', description: 'This is the description for item 1.' },
         { id: 2, title: 'Item 2', description: 'This is the description for item 2.' },
@@ -25,8 +31,8 @@ const Home = () => {
                             e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
                         }}
                     >
-                        <h2 style={{ color: '#333', fontSize: '2rem' }}>{item.title}</h2>
-                        <p style={{ color: '#666', fontSize: '1.2rem' }}>{item.description}</p>
+                        <h2 style={{ color: '#333', fontSize: '2rem' }}>{authInfo.username}</h2>
+                        <p style={{ color: '#666', fontSize: '1.2rem' }}>{authInfo.password}</p>
                     </div>
                 ))}
             </div>

@@ -8,7 +8,9 @@ const Root = () => {
             <div className='shadow-2xl'>
                 <Navbar></Navbar>
             </div>
+            <div>
             <Outlet></Outlet>
+            </div>
         </div>
     );
 };
