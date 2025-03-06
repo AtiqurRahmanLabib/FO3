@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProviders';
 
 const SignUp = () => {
+    const { createUser } = useContext(AuthContext);
     const handleSubmit = (e) => {
-    e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
-    console.log('Email:', username, 'Password:', password);
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log('Email:', email, 'Password:', password);
+        createUser(email, password)
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            }
+            )
     }
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">

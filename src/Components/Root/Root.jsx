@@ -3,7 +3,9 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 
 const Root = () => {
+
     return (
+
         <div>
             <div className='shadow-2xl'>
                 <Navbar></Navbar>
@@ -12,6 +14,7 @@ const Root = () => {
             <Outlet></Outlet>
             </div>
         </div>
+        
     );
 };
 
