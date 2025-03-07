@@ -20,11 +20,11 @@ const UserProfile = () => {
                     user && <div>
                         <h2 className="text-2xl font-bold mb-4">User Profile</h2>
                         <p className="text-gray-700">{user.email}</p>
-                        <button className='w-[150px] h-[50px] text-[20px] font-bold text-red-500' onClick={handleLogout}>Logout</button>
+                        <button className='w-[150px] h-[50px] text-[20px] font-bold bg-red-500 text-[#FFFFFF] rounded-2xl' onClick={handleLogout}>Logout</button>
                     </div>
                 }
                 {
-                    !user && <Link to="/login"><button className='w-[150px] h-[50px] text-[20px] font-bold text-green-500'>Please login</button></Link>
+                    !user && <Link to="/login"><button className='w-[150px] h-[50px] text-[20px] font-bold bg-green-500 text-white rounded-2xl'>Please login</button></Link>
                 }
             </div>
         </div>
