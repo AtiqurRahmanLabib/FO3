@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/Firebase.init';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 
 export const AuthContext = createContext(null);
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+    const googleProvider = new GoogleAuthProvider()
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
@@ -16,13 +16,17 @@ const AuthProviders = ({ children }) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
+    const GoogleSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider)
+    }
     const  logout = () => {
         setLoading(true);
         return signOut(auth)
             
     };
 
-    const authInfo = { user, createUser, SignIn, logout, loading };
+    const authInfo = { user, createUser, SignIn, logout, loading, GoogleSignIn };
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentuser => {
             setUser(currentuser);

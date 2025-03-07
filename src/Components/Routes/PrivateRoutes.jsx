@@ -7,7 +7,7 @@ const PrivateRoutes = ({ children }) => {
     if (loading){
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-         <span className="loading loading-spinner loading-xl"></span>
+         <span className="loading loading-spinner loading-xl">Loadin...</span>
         </div>
     );
     }

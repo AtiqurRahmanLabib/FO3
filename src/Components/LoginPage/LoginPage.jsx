@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProviders';
 
 const LoginPage = () => {
-    const { SignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { SignIn, GoogleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [suceess, setSuccess] = useState('');
     const handleSubmit = (e) => {
@@ -16,6 +17,21 @@ const LoginPage = () => {
         SignIn(email, password)
             .then(result => {
                 setSuccess('User login successfully');
+                e.target.reset()
+                navigate('/home')
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error);
+                setError(error.message);
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        GoogleSignIn()
+            .then(result => {
+                setSuccess('User login successfully');
+                navigate('/home')
                 console.log(result.user)
             })
             .catch(error => {
@@ -44,6 +60,7 @@ const LoginPage = () => {
                     }
                     <button type="submit" className="w-full px-4 py-2 font-bold text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Sing in</button>
                 </form>
+                <button onClick={handleGoogleSignIn} className="w-full px-4 py-2 font-bold text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Google</button>
                 <Link to="/signup" className="block text-center text-indigo-600 hover:underline">Create an account</Link>
             </div>
         </div>
