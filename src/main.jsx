@@ -8,6 +8,8 @@ import ErrorPage from './Components/Error/ErrorPage';
 import Login from './Components/LoginPage/LoginPage';
 import SignUp from './Components/SignUp/SIgnUp';
 import AuthProviders from './Components/Provider/AuthProviders';
+import UserProfile from './Components/UserProfile/UserProfile';
+
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>
-      }
+      },
+      {
+        path: "/UserProfile",
+        element: <UserProfile></UserProfile>
+       },
     ],
   },
 ]);
@@ -34,7 +40,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProviders>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProviders>
   </StrictMode>,
 )

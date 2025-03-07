@@ -34,6 +34,15 @@ const Navbar = () => {
                     >
                         Sing Up
                     </NavLink>
+                    <NavLink
+                        to="/UserProfile"
+                        className={({ isActive }) =>
+                            `rounded-[8px] w-[100px] h-[49px] border text-[18px] font-semibold text-center pt-2.5 
+                            ${isActive ? 'border-[#23BE0A] text-[#23BE0A]' : 'border-none text-[#131313]/80'}`
+                        }
+                    >
+                        Profile
+                    </NavLink>
                     
                 </div>
                 
